@@ -1,18 +1,21 @@
 import { useEffect, useState } from "react";
 import GameCard from "./GameCard";
+import * as gameService from '../../services/gameService';
 
-export default function Catalog({
+const  GameCatalog = ({
   navigationChangeHandler,
-}) {
+}) => {
   const [games, setGames] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/data/games?sortBy=_createdOn%20desc')
-      .then(res => res.json())
-      .then(result => {
-        setGames(result);
-      });
+    setTimeout(() => {
+      gameService.getAll()
+        .then(result => {
+          setGames(result);
+        })
+    }, 1000);
   }, []);
+
   return (
     <section id="catalog-page">
       <h1>All Games</h1>
@@ -23,3 +26,5 @@ export default function Catalog({
     </section>
   );
 };
+
+export default GameCatalog;
