@@ -1,6 +1,6 @@
 import GameCard from "../components/GameCatalog/GameCard";
 
-const baseUrl = 'http://localhost:3000/data';
+const baseUrl = 'http://localhost:3030/data';
 
 export function getAll() {
     return fetch(`${baseUrl}/games?sortBy=_createdOn%20desc`)
