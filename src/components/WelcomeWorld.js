@@ -7,10 +7,16 @@ export default function WelcomeWorld({
 }) {
   const [games, setGames] = useState([]);
 
-  useEffect(async () => {
-    let result = await gameService.getLatest();
-    setGames(result);
-  });
+  // useEffect(async () => {
+  //   let result = await gameService.getLatest();
+  //   setGames(result);
+  // });
+  useEffect(() => {
+    gameService.getLatest()
+        .then(result => {
+            setGames(result);
+        })
+}, []);
   return (
     <section id="welcome-world">
 
