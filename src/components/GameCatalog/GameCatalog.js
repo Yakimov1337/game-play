@@ -2,18 +2,14 @@ import { useEffect, useState } from "react";
 import GameCard from "./GameCard";
 import * as gameService from '../../services/gameService';
 
-const  GameCatalog = ({
+const GameCatalog = ({
   navigationChangeHandler,
 }) => {
   const [games, setGames] = useState([]);
 
-  useEffect(() => {
-    setTimeout(() => {
-      gameService.getAll()
-        .then(result => {
-          setGames(result);
-        })
-    }, 1000);
+  useEffect(async () => {
+    let result = await gameService.getAll();
+    setGames(result);
   }, []);
 
   return (

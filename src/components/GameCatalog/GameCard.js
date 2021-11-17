@@ -3,7 +3,8 @@ const GameCard = ({
     navigationChangeHandler,
 })=> {
     const onDetailsClick = (e) => {
-        navigationChangeHandler('/details/${game._id}')
+        e.preventDefault();
+        navigationChangeHandler(`/details/${game._id}`)
     }
     return (
         <div className="allGames">
@@ -11,7 +12,7 @@ const GameCard = ({
           <img src={game.imageUrl} />
           <h6>{game.category}</h6>
           <h2>{game.title}</h2>
-          <a href={'/details/${game._id}'} className="details-button">Details</a>
+          <a href={`/details/${game._id}`} onClick={onDetailsClick} className="details-button">Details</a>
         </div>
 
       </div>
