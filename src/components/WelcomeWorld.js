@@ -2,9 +2,7 @@ import * as gameService from '../services/gameService.js';
 import { useState, useEffect } from 'react';
 import LatestGameCard from './LatestGameCard.js';
 
-export default function WelcomeWorld({
-  navigationChangeHandler
-}) {
+export default function WelcomeWorld() {
   const [games, setGames] = useState([]);
 
   // useEffect(async () => {
@@ -33,7 +31,6 @@ export default function WelcomeWorld({
             games.length>0
             ? games.map(x=> <LatestGameCard 
               key={x._id} 
-              navigationChangeHandler={navigationChangeHandler} 
               game={x} />)
             : <p className="no-articles">No games yet</p>
           }
