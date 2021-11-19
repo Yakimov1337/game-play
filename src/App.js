@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import {Route} from 'react-router-dom';
+
 import Header from './components/Header.js';
 import WelcomeWorld from './components/WelcomeWorld.js';
 import CreateGame from './components/CreateGame.js';
@@ -5,7 +8,6 @@ import Register from './components/Register.js';
 import Login from './components/Login.js';
 import EditGame from './components/EditGame.js';
 import GameDetails from './components/GameDetails.js';
-import { useState } from 'react';
 import GameCatalog from './components/GameCatalog/GameCatalog.js';
 
 
@@ -42,7 +44,8 @@ function App() {
         navigationChangeHandler={navigationChangeHandler}
       />
       <main id="main-content">
-        {router(page) || <h1>No page Found</h1>}
+        <Route exact path="/" component={WelcomeWorld}/>
+        <Route path="/games" component = {GameCatalog}/>
       </main>
     </div>
   );
