@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 import Header from './components/Header.js';
 import WelcomeWorld from './components/WelcomeWorld.js';
@@ -14,11 +14,11 @@ import GameCatalog from './components/GameCatalog/GameCatalog.js';
 
 
 function App() {
-  
-  
+
+
   return (
     <div id="box">
-      <Header/>
+      <Header />
       <main id="main-content">
         <Switch>
           <Route exact path="/" component={WelcomeWorld} />
@@ -27,6 +27,14 @@ function App() {
           <Route path="/create-game" component={CreateGame} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
+          <Route path="/custom">
+            <h3>Custom page</h3>
+          </Route>
+          <Route path="/logout" render={(props)=> {
+            // firebase.logOut() maybe?
+            return <Redirect to='/'/>
+
+          }}/>
         </Switch>
 
       </main>
